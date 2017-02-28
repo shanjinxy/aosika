@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>A股奥斯卡，我也玩“乌龙”
+    </title>
+    <link rel="stylesheet" href="./static/styles/reset.css">
+    <link rel="stylesheet" href="./static/styles/index.css">
+</head>
+<body>
+<div class="layout">
+    <img src="./static/images/bg.png" alt="" class="bgimg">
+    <header>
+        <img src="./static/images/head.png" width="" alt="">
+    </header>
+    <div class="intro">
+        <p>选择题和选项</p>
+        <p>生成A股各种最佳</p>
+        <p>发到朋友圈,</p>
+        <p>让奥斯卡为你表达最新观点</p>
+    </div>
+    <div class="main">
+        <div class="selectItems">
+            <select class="selectBox" >
+                <option value="0"> A股最佳年度大片是?</option>
+                <option value="1"> 你心中的最佳证监会主席是？</option>
+                <option value="2"> A股最大的反指：</option>
+            </select>
+        </div>
+        <div class="radioBox isVisible">
+            <form>
+                <div><input type="radio" value="万科门前的野蛮人" name="opt0box"> A、万科门前的野蛮人
+                </div>
+                <div><input type="radio" value="荡漾的乐视" name="opt0box"> B、荡漾的乐视
+                </div>
+                <div><input type="radio" value="马云也叫不到的快递" name="opt0box"> C、马云也叫不到的快递
+                </div>
+                <div>
+                    <input type="radio"  value="" name="opt0box"> D、
+                    <input  type="text" maxlength='20' class="userText" placeholder="发表你的观点">
+                </div>
+            </form>
+        </div>
+        <div class="radioBox">
+            <form>
+                <div><input type="radio" value="刘士余" name="opt1box"> A、刘士余
+                </div>
+                <div><input type="radio" value="肖钢" name="opt1box"> B、肖钢
+                </div>
+                <div><input type="radio" value="郭树清" name="opt1box"> C、郭树清
+                </div>
+                <div>
+                    <input type="radio" value=" " name="opt1box"> D、
+                    <input type="text" maxlength='20' placeholder="发表你的观点" class="userText">
+                </div>
+            </form>
+        </div>
+        <div class="radioBox">
+            <form>
+                <div><input type="radio" value="王菲" name="opt2box"> A、王菲
+                </div>
+                <div><input type="radio" value="大同煤业" name="opt2box"> B、大同煤业
+                </div>
+                <div><input type="radio" value="高盛" name="opt2box"> C、高盛
+                </div>
+                <div>
+                    <input type="radio" value=" " name="opt2box"> D、
+                    <input type="text" maxlength='20' class="userText" placeholder="发表你的观点">
+                </div>
+            </form>
+        </div>
+        <button class="generateButton">生成</button>
+        <footer>
+            <p>年度股市最佳APP--选股宝</p>
+            <a href="#" class="download">
+                <img src="./static/images/download.png" alt="">
+            </a>
+        </footer>
+    </div>
+</div>
+<script src="./static/vendor/jquery.min.js"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wx57ee0c032a9a1901',
+        timestamp: 1482143548,
+        nonceStr: '738107891616263',
+        signature: 'd822a8cf48360ee0c76ea26216eb907ab0517051',
+        jsApiList: [
+            'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'
+        ]
+    });
+    wx.ready(function () {
+        var shareImg = window.location.origin + '/static/images/WechatIMG9.jpeg';
+        var title = "A股奥斯卡，我也玩'乌龙'";
+        var desc = "A股奥斯卡，我也玩'乌龙'";
+        var url = "http://activity.wallstreetcn.com/xuangubao/index.html";
+        wx.onMenuShareTimeline({
+            title: title, // 分享标题
+            link: url, // 分享链接
+            imgUrl: shareImg, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: url, // 分享链接
+            imgUrl: shareImg, // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareQQ({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: url, // 分享链接
+            imgUrl: shareImg, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+    });
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-64451198-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script src="./static/scripts/index.js"></script>
+</body>
+</html>

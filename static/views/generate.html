@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>A股奥斯卡，我也玩“乌龙”</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/generate.css">
+    <script src='../scripts/html2canvas.js'></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <p>长按保存图片，发到朋友圈</p>
+        <p>让奥斯卡为你表达最新观点</p>
+    </header>
+    <div class="content">
+        <img src="../images/newimg.jpeg" alt="">
+        <div class="message">
+            <h3>你心中的最佳证监会主席是</h3>
+            <p>肖钢</p>
+        </div>
+    </div>
+    <button class="regenerate">重新生成</button>
+    <footer>
+        <p>年度股市最佳APP--选股宝</p>
+        <a href="#" class="download">
+            <img src="../images/download.png" alt="">
+        </a>
+    </footer>
+</div>
+<script src="../vendor/jquery.min.js"></script>
+<script>
+    function splitImg() {
+        html2canvas($('.content'), {
+            onrendered: function(canvas) {
+                var dataUrl = canvas.toDataURL();
+                var newImg = document.createElement("img");
+                newImg.src = dataUrl;
+                newImg.style.width = '100%';
+                $('.content').html("");
+                newImg.onload = function () {
+                    document.getElementsByClassName("content")[0].appendChild(newImg);
+                }
+            }
+        });
+    }
+</script>
+<script src="../scripts/generate.js"> </script>
+</body>
+</html>

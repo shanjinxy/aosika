@@ -26,6 +26,12 @@ html{
     }
 }
 
+.sharepic {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+}
 .layout{
     width: 100%;
     height: 100%;
@@ -133,12 +139,13 @@ option{
     position: absolute;
     top:2rem;
     right:10px;
+    z-index: 100;
 }
 
 /**/
 
 .layout footer{
-    padding: .6rem 10% .5rem;
+    padding: .8rem 10% .5rem;
     margin: 0 auto;
     color:#f5d872;
     text-align: center;

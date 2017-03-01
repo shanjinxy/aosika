@@ -4,6 +4,26 @@ $(function () {
 
     // ga 发送事件
 
+    $(".download").click(function (e) {
+        e.preventDefault();
+        ga('send', 'event', {
+            eventCategory: 'A股票奥斯卡下载',
+            eventAction: 'click',
+            eventLabel: 'A股票奥斯卡'
+        });
+        setTimeout(function () {
+            window.location.href = "http://bao.wallstreetcn.com/static/app.html?from=yuanbao";
+        }, 500)
+    })
+
+    // 生成按钮
+    $(".generateButton").click(function (e) {
+        ga('send', 'event', {
+            eventCategory: 'A股票奥斯卡生成',
+            eventAction: 'click',
+            eventLabel: 'A股票奥斯卡'
+        });
+    })
 
     // select 盒子的change事件
     $(".selectBox").change(function () {
@@ -58,7 +78,12 @@ $(function () {
     }
     //跳转生成图片
     $(".generateButton").click(function () {
-        console.log('我被点击')
+        var textSubmit = $('input[type=radio]').filter(':checked').val();
+        console.log(textSubmit);
+        if(textSubmit ==''||textSubmit ==' '){
+            alert('请输入相关选项')
+            return false
+        }
         check_info();
 
     })

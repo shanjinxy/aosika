@@ -10,6 +10,7 @@
     <script src='../scripts/html2canvas.js'></script>
 </head>
 <body>
+<img src="http://image.bao.wallstreetcn.com/sharepic.jpeg" alt="" class="sharepic">
 <div class="container">
     <header>
         <p>长按保存图片，发到朋友圈</p>
@@ -21,6 +22,9 @@
             <h3>你心中的最佳证监会主席是</h3>
             <p>肖钢</p>
         </div>
+        <div class="erweima">
+            <img src="../images/index-erweima.png" alt="">
+        </div>
     </div>
     <button class="regenerate">重新生成</button>
     <footer>
@@ -31,6 +35,91 @@
     </footer>
 </div>
 <script src="../vendor/jquery.min.js"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wx57ee0c032a9a1901',
+        timestamp: 1482143548,
+        nonceStr: '738107891616263',
+        signature: 'd822a8cf48360ee0c76ea26216eb907ab0517051',
+        jsApiList: [
+            'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ'
+        ]
+    });
+
+    wx.ready(function () {
+        var shareImg = window.location.origin + '/static/images/sharepic.jpeg';
+        var title = "A股奥斯卡，我也玩'乌龙'";
+        var desc = "A股奥斯卡，我也玩'乌龙'";
+        var url = "http://activity.wallstreetcn.com/xuangubao/index.html";
+        wx.onMenuShareTimeline({
+            title: title, // 分享标题
+            link: url, // 分享链接
+            imgUrl: shareImg, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: url, // 分享链接
+            imgUrl: shareImg, // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareQQ({
+            title: title, // 分享标题
+            desc: desc, // 分享描述
+            link: url, // 分享链接
+            imgUrl: shareImg, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+    });
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+        function loadGoogleAPI() {
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            setTimeout(function () {
+                m.parentNode.insertBefore(a, m)
+                ga('create', 'UA-64451198-3', 'auto');
+                ga('send', 'pageview');
+            }, 50);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener("load", loadGoogleAPI, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent("onload", loadGoogleAPI);
+        }
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+</script>
 <script>
     function splitImg() {
         html2canvas($('.content'), {

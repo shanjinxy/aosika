@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./static/styles/index.css">
 </head>
 <body>
+<img src="http://image.bao.wallstreetcn.com/sharepic.jpeg" alt="" class="sharepic">
 <div class="layout">
     <img src="./static/images/bg.png" alt="" class="bgimg">
     <header>
@@ -25,7 +26,7 @@
         <div class="selectItems">
             <select class="selectBox" >
                 <option value="0"> A股最佳年度大片是?</option>
-                <option value="1"> 你心中的最佳证监会主席是？</option>
+                <option value="1"> 你心中最佳证监会主席?</option>
                 <option value="2"> A股最大的反指：</option>
             </select>
         </div>
@@ -39,7 +40,7 @@
                 </div>
                 <div>
                     <input type="radio"  value="" name="opt0box"> D、
-                    <input  type="text" maxlength='20' class="userText" placeholder="发表你的观点">
+                    <input  type="text" maxlength='10' class="userText" placeholder="发表你的观点">
                 </div>
             </form>
         </div>
@@ -53,7 +54,7 @@
                 </div>
                 <div>
                     <input type="radio" value=" " name="opt1box"> D、
-                    <input type="text" maxlength='20' placeholder="发表你的观点" class="userText">
+                    <input type="text" maxlength='10' placeholder="发表你的观点" class="userText">
                 </div>
             </form>
         </div>
@@ -67,7 +68,7 @@
                 </div>
                 <div>
                     <input type="radio" value=" " name="opt2box"> D、
-                    <input type="text" maxlength='20' class="userText" placeholder="发表你的观点">
+                    <input type="text" maxlength='10' class="userText" placeholder="发表你的观点">
                 </div>
             </form>
         </div>
@@ -94,7 +95,7 @@
         ]
     });
     wx.ready(function () {
-        var shareImg = window.location.origin + '/static/images/WechatIMG9.jpeg';
+        var shareImg = window.location.origin + '/static/images/sharepic.jpeg';
         var title = "A股奥斯卡，我也玩'乌龙'";
         var desc = "A股奥斯卡，我也玩'乌龙'";
         var url = "http://activity.wallstreetcn.com/xuangubao/index.html";
@@ -144,15 +145,25 @@
         i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        function loadGoogleAPI() {
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            setTimeout(function () {
+                m.parentNode.insertBefore(a, m)
+                ga('create', 'UA-64451198-3', 'auto');
+                ga('send', 'pageview');
+            }, 50);
+        }
 
-    ga('create', 'UA-64451198-3', 'auto');
-    ga('send', 'pageview');
+        if (window.addEventListener) {
+            window.addEventListener("load", loadGoogleAPI, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent("onload", loadGoogleAPI);
+        }
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
 </script>
 <script src="./static/scripts/index.js"></script>
